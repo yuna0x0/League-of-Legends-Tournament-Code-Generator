@@ -1,1 +1,1 @@
-# lolcode.edisonlee55.com
+# LOL電競專碼生成器
