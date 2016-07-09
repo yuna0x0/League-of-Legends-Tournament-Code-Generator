@@ -24,6 +24,7 @@ $(document).ready(function(){
 });
 $("#submit").click(function() {
     $("#result").empty();
+    var mapselect = $("#map-select").val();
     var pickselect = $("#pick-select").val();
     var teamselect = $("#team-select").val();
     var specselect = $("#spec-select").val();
