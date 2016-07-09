@@ -13,9 +13,17 @@ return t;}};
 $(document).ready(function(){
     $("#team-select").mouseover(function() {
         var mapselect = $("#map-select").val();
-        if (mapselect === "map10") {
+        var teamselecthtml = $("#team-select").html();
+        if(teamselecthtml === '<option value="team1">1</option><option value="team2">2</option><option value="team3">3</option>'){
+            if(mapselect !== "map10"){
+                $("#team-select").empty();
+            $("#team-select").append('<option value="team1">1</option><option value="team2">2</option><option value="team3">3</option><option value="team4">4</option><option value="team5">5</option>');
+            }
+        }else if(mapselect === "map10") {
             $("#team-select").empty();
             $("#team-select").append('<option value="team1">1</option><option value="team2">2</option><option value="team3">3</option>');
+        }else if(teamselecthtml === '<option value="team1">1</option><option value="team2">2</option><option value="team3">3</option><option value="team4">4</option><option value="team5">5</option>'){
+        
         }else{
             $("#team-select").empty();
             $("#team-select").append('<option value="team1">1</option><option value="team2">2</option><option value="team3">3</option><option value="team4">4</option><option value="team5">5</option>');
