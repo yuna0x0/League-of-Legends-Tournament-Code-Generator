@@ -10,15 +10,17 @@ if(a!=64){t=t+String.fromCharCode(i);}}
 t=Base64._utf8_decode(t);return t;},_utf8_encode:function(e){e=e.replace(/rn/g,"n");var t="";for(var n=0;n<e.length;n++){var r=e.charCodeAt(n);if(r<128){t+=String.fromCharCode(r);}else if(r>127&&r<2048){t+=String.fromCharCode(r>>6|192);t+=String.fromCharCode(r&63|128);}else{t+=String.fromCharCode(r>>12|224);t+=String.fromCharCode(r>>6&63|128);t+=String.fromCharCode(r&63|128);}}
 return t;},_utf8_decode:function(e){var t="";var n=0;var r=c1=c2=0;while(n<e.length){r=e.charCodeAt(n);if(r<128){t+=String.fromCharCode(r);n++;}else if(r>191&&r<224){c2=e.charCodeAt(n+1);t+=String.fromCharCode((r&31)<<6|c2&63);n+=2;}else{c2=e.charCodeAt(n+1);c3=e.charCodeAt(n+2);t+=String.fromCharCode((r&15)<<12|(c2&63)<<6|c3&63);n+=3;}}
 return t;}};
-$("#team-select").mouseover(function() {
-    var mapselect = $("#map-select").val();
-    if (mapselect === "map10") {
-        $("#team-select").empty();
-        $("#team-select").append('<option value="team1">1</option><option value="team2">2</option><option value="team3">3</option>');
-    }else{
-        $("#team-select").empty();
-        $("#team-select").append('<option value="team1">1</option><option value="team2">2</option><option value="team3">3</option><option value="team4">4</option><option value="team5">5</option>');
-    }
+$(document).ready(function(){
+    $("#team-select").mouseover(function() {
+        var mapselect = $("#map-select").val();
+        if (mapselect === "map10") {
+            $("#team-select").empty();
+            $("#team-select").append('<option value="team1">1</option><option value="team2">2</option><option value="team3">3</option>');
+        }else{
+            $("#team-select").empty();
+            $("#team-select").append('<option value="team1">1</option><option value="team2">2</option><option value="team3">3</option><option value="team4">4</option><option value="team5">5</option>');
+        }
+    });
 });
 $("#submit").click(function() {
     $("#result").empty();
