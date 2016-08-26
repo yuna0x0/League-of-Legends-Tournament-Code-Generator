@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="en-US">
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="resource/favicon.ico">
-    <title>LOL電競專碼生成器</title>
+    <title>League of Legends Tournament Code</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
     <link href="css/stylesheet.css" rel="stylesheet">
@@ -23,11 +23,11 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html">LOL電競專碼生成器</a>
+                    <a class="navbar-brand" href="index.html">League of Legends Tournament Code</a>
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="index.html">首頁</a>
+                        <li class="active"><a href="index.html">Home</a>
                         </li>
                     </ul>
                 </div>
@@ -36,34 +36,31 @@
 
         <div class="container">
             <div class="page-header">
-                <h1>LOL電競專碼生成器</h1>
-                <h4>版本:dev_v1</h4>
-                <h4>還在開發測試中，如有Bug請Email:edisonlee55@dumbeartech.com</h4>
-                <h4>電競專碼相關說明將會在後續版本更新上去</h4>
-                <h4>由 <a href="https://www.facebook.com/edisonlee55" target="_blank" title="李明謙 Edison Lee">李明謙 Edison Lee</a> 所開發(立刻追蹤我FB!)</h4>
+                <h1>League of Legends Tournament Code</h1>
+                <h4>Version: 1.0</h4>
             </div>
             <form class="col-md-4 form-horizontal">
-                <h4>基本設定</h4>
+                <h4>Basic settings</h4>
                 <div class="form-group">
-                    <label>地圖</label>
+                    <label>Map</label>
                     <select id="map-select" class="form-control">
-                        <option value="map8">水晶之痕</option>
-                        <option value="map10">扭曲森林</option>
-                        <option value="map11">召喚峽谷</option>
-                        <option value="map12">咆哮聲淵</option>
+                        <option value="map8">Crystal Scar (Not available now)</option>
+                        <option value="map10">Twisted Treeline</option>
+                        <option value="map11">Summoner's Rift</option>
+                        <option value="map12">Howling Abyss</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>對戰類型</label>
+                    <label>Game Mode</label>
                     <select id="pick-select" class="form-control">
-                        <option value="pick1">自選模式</option>
-                        <option value="pick2">競技模式</option>
-                        <option value="pick4">全部隨機</option>
-                        <option value="pick6">電競選角</option>
+                        <option value="pick1">Blind Pick</option>
+                        <option value="pick2">Draft Mode</option>
+                        <option value="pick4">All Random</option>
+                        <option value="pick6">Tournament Draft</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>隊伍人數</label>
+                    <label>Team Size</label>
                     <select id="team-select" class="form-control">
                         <option value="team1">1</option>
                         <option value="team2">2</option>
@@ -73,32 +70,32 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>允許觀戰者模式</label>
+                    <label>Spectator Mode</label>
                     <select id="spec-select" class="form-control">
-                        <option value="specALL">全部人都可以觀戰</option>
-                        <option value="specNONE">沒有人可以觀戰</option>
-                        <option value="specLOBBYONLY">只有組隊房間內可以觀戰</option>
+                        <option value="specALL">Allow Anyone To Spectate</option>
+                        <option value="specNONE">Allow No One To Spectate</option>
+                        <option value="specLOBBYONLY">Allow Only Lobby Spectators</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>房間名稱</label>
-                    <input type="text" class="form-control" id="game-name" placeholder="Example 的房間">
+                    <label>Game Name</label>
+                    <input type="text" class="form-control" id="game-name" placeholder="Example's Game">
                 </div>
                 <div class="form-group">
-                    <label>房間密碼(可選)</label>
-                    <input type="password" class="form-control" id="game-password" placeholder="密碼">
+                    <label>Game Password (Optional)</label>
+                    <input type="password" class="form-control" id="game-password" placeholder="Password">
                 </div>
-                <h4>進階設定(可選)</h4>
+                <h4>Advanced settings (Optional)</h4>
                 <div class="form-group">
-                    <label>房間ID</label>
+                    <label>Game ID</label>
                     <input type="text" class="form-control" id="game-id" placeholder="1">
                 </div>
                 <div class="form-group">
-                    <label>遊戲結束時，遊戲對戰紀錄回報網址</label>
+                    <label>Game Report URL</label>
                     <input type="text" class="form-control" id="game-report" placeholder="https://api.example.com/gamereport/">
                 </div>
                 <div class="form-group">
-                    <input class="btn btn-primary" type="button" id="submit" value="產生!">
+                    <input class="btn btn-primary" type="button" id="submit" value="Generate!">
                 </div>
                 <div id="result">
                 </div>
@@ -106,6 +103,7 @@
         </div>
 
         <script src="js/jquery.min.js"></script>
+        <script>window.jQuery = window.$ = module.exports;</script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/ie10-viewport-bug-workaround.js"></script>
         <script src="js/main.js"></script>
