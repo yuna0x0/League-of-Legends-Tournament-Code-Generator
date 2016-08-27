@@ -41,10 +41,10 @@ $("#submit").click(function() {
     var gameid = $("#game-id").val();
     var gamereport = $("#game-report").val();
     if (gamename === "") {
-        alert("錯誤:房間名稱不可為空白!");
+        alert("Error: Game Name cannot be empty!");
     } else {
         var json = '{"name":"' + gamename + '","extra":"' + gameid + '","password":"' + gamepassword + '","report":"' + gamereport + '"}';
         var code = "pvpnet://lol/customgame/joinorcreate/" + mapselect + "/" + pickselect + "/" + teamselect + "/" + specselect + "/" + Base64.encode(json);
-        $("#result").append('<h3>產生的電競專碼</h3><textarea class="form-control" rows="3">' + code + '</textarea>');
+        $("#result").append('<h3>Tournament Code</h3><textarea class="form-control" rows="3">' + code + '</textarea>');
     }
 });
