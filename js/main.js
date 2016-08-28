@@ -47,6 +47,7 @@ $("#submit").click(function() {
     var gameid = $("#game-id").val();
     var gamereport = $("#game-report").val();
     if (gamename === "") {
+<<<<<<< HEAD
         $("#game-name-input").attr('class','field error');
         $("#submit").attr('class','ui primary button');
     }
@@ -70,5 +71,12 @@ $("#submit").click(function() {
         var code = "pvpnet://lol/customgame/joinorcreate/" + mapselect + "/" + pickselect + "/" + teamselect + "/" + specselect + "/" + Base64.encode(json);
         $("#result").append('<h3>Tournament Code</h3><textarea class="form-control" rows="3">' + code + '</textarea>');
         $("#submit").attr('class','ui primary button');
+=======
+        alert("Error: Game Name cannot be empty!");
+    } else {
+        var json = '{"name":"' + gamename + '","extra":"' + gameid + '","password":"' + gamepassword + '","report":"' + gamereport + '"}';
+        var code = "pvpnet://lol/customgame/joinorcreate/" + mapselect + "/" + pickselect + "/" + teamselect + "/" + specselect + "/" + Base64.encode(json);
+        $("#result").append('<h3>Tournament Code</h3><textarea class="form-control" rows="3">' + code + '</textarea>');
+>>>>>>> origin/gh-pages
     }
 });
