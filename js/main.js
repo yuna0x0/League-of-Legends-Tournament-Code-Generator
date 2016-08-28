@@ -37,6 +37,9 @@ $("#submit").click(function() {
     $("#result").empty();
     $("#game-name-input").attr('class','field');
     $("#map-select").attr('class','ui selection dropdown');
+    $("#pick-select").attr('class','ui selection dropdown');
+    $("#team-select").attr('class','ui selection dropdown');
+    $("#spec-select").attr('class','ui selection dropdown');
     $("#submit").attr('class','ui primary loading button');
     var mapselect = $("#map-select").dropdown('get value');
     var pickselect = $("#pick-select").dropdown('get value');
