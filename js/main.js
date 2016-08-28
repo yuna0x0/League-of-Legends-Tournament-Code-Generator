@@ -35,13 +35,40 @@ $(document).ready(function(){
 });
 $("#submit").click(function() {
     $("#result").empty();
+    $("#game-name-input").attr('class','field');
+    $("#map-select").attr('class','ui selection dropdown');
+    $("#submit").attr('class','ui primary loading button');
+    var mapselect = $("#map-select").dropdown('get value');
+    var pickselect = $("#pick-select").dropdown('get value');
+    var teamselect = $("#team-select").dropdown('get value');
+    var specselect = $("#spec-select").dropdown('get value');
     var gamename = $("#game-name").val();
     var gamepassword = $("#game-password").val();
     var gameid = $("#game-id").val();
     var gamereport = $("#game-report").val();
     if (gamename === "") {
-    } else {
+        $("#game-name-input").attr('class','field error');
+        $("#submit").attr('class','ui primary button');
+    }
+    if(mapselect === ""){
+            $("#map-select").attr('class','ui selection dropdown error');
+            $("#submit").attr('class','ui primary button');
+    }
+    if(pickselect === ""){
+            $("#pick-select").attr('class','ui selection dropdown error');
+            $("#submit").attr('class','ui primary button');
+    }
+    if(teamselect === ""){
+            $("#team-select").attr('class','ui selection dropdown error');
+            $("#submit").attr('class','ui primary button');
+    }
+    if(specselect === ""){
+            $("#spec-select").attr('class','ui selection dropdown error');
+            $("#submit").attr('class','ui primary button');
+    }else{
         var json = '{"name":"' + gamename + '","extra":"' + gameid + '","password":"' + gamepassword + '","report":"' + gamereport + '"}';
         var code = "pvpnet://lol/customgame/joinorcreate/" + mapselect + "/" + pickselect + "/" + teamselect + "/" + specselect + "/" + Base64.encode(json);
+        $("#result").append('<h3>Tournament Code</h3><textarea class="form-control" rows="3">' + code + '</textarea>');
+        $("#submit").attr('class','ui primary button');
     }
 });
