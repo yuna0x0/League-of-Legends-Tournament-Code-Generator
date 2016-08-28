@@ -12,6 +12,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
     <link href="css/stylesheet.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/semantic.min.css">
 
     <body>
         <nav class="navbar navbar-default navbar-fixed-top">
@@ -34,68 +35,88 @@
             </div>
         </nav>
 
-        <div class="container">
-            <div class="page-header">
+        <div class="ui container">
+            <div class="ui page-header">
                 <h1>League of Legends Tournament Code</h1>
                 <h4>Version: 1.0</h4>
             </div>
-            <form class="col-md-4 form-horizontal">
+            <form class="ui form">
                 <h4>Basic settings</h4>
-                <div class="form-group">
+                <div class="field">
                     <label>Map</label>
-                    <select id="map-select" class="form-control">
-                        <option value="map8">Crystal Scar (Not available now)</option>
-                        <option value="map10">Twisted Treeline</option>
-                        <option value="map11">Summoner's Rift</option>
-                        <option value="map12">Howling Abyss</option>
-                    </select>
+                    <div id="map-select" class="ui selection dropdown" tabindex="0">
+                      <div class="default text">Select Map</div>
+                      <i class="dropdown icon"></i>
+                      <input type="hidden" name="map-select">
+                      <div class="menu transition hidden" tabindex="-1">
+                        <div class="item" data-value="map8">Crystal Scar (Not available now)</div>
+                        <div class="item" data-value="map10">Twisted Treeline</div>
+                        <div class="item" data-value="map11">Summoner's Rift</div>
+                        <div class="item" data-value="map12">Howling Abyss</div>
+                      </div>
+                    </div>
                 </div>
-                <div class="form-group">
+                <div class="field">
                     <label>Game Mode</label>
-                    <select id="pick-select" class="form-control">
-                        <option value="pick1">Blind Pick</option>
-                        <option value="pick2">Draft Mode</option>
-                        <option value="pick4">All Random</option>
-                        <option value="pick6">Tournament Draft</option>
-                    </select>
+                    <div id="pick-select" class="ui selection dropdown" tabindex="0">
+                      <div class="default text">Select Game Mode</div>
+                      <i class="dropdown icon"></i>
+                      <input type="hidden" name="game-select">
+                      <div class="menu transition hidden" tabindex="-1">
+                        <div class="item" data-value="pick1">Blind Pick</div>
+                        <div class="item" data-value="pick2">Draft Mode</div>
+                        <div class="item" data-value="pick4">All Random</div>
+                        <div class="item" data-value="pick6">Tournament Draft</div>
+                      </div>
+                    </div>
                 </div>
-                <div class="form-group">
+                <div class="field">
                     <label>Team Size</label>
-                    <select id="team-select" class="form-control">
-                        <option value="team1">1</option>
-                        <option value="team2">2</option>
-                        <option value="team3">3</option>
-                        <option value="team4">4</option>
-                        <option value="team5">5</option>
-                    </select>
+                    <div id="team-select" class="ui selection dropdown" tabindex="0">
+                      <div class="default text">Select Team Size</div>
+                      <i class="dropdown icon"></i>
+                      <input type="hidden" name="team-select">
+                      <div id="team-select-menu" class="menu transition hidden" tabindex="-1">
+                        <div class="item" data-value="team1">1</div>
+                        <div class="item" data-value="team2">2</div>
+                        <div class="item" data-value="team3">3</div>
+                        <div class="item" data-value="team4">4</div>
+                        <div class="item" data-value="team5">5</div>
+                      </div>
+                    </div>
                 </div>
-                <div class="form-group">
+                <div class="field">
                     <label>Spectator Mode</label>
-                    <select id="spec-select" class="form-control">
-                        <option value="specALL">Allow Anyone To Spectate</option>
-                        <option value="specNONE">Allow No One To Spectate</option>
-                        <option value="specLOBBYONLY">Allow Only Lobby Spectators</option>
-                    </select>
+                    <div id="spec-select" class="ui selection dropdown" tabindex="0">
+                      <div class="default text">Select Spectator Mode</div>
+                      <i class="dropdown icon"></i>
+                      <input type="hidden" name="spec-select">
+                      <div id="team-select-menu" class="menu transition hidden" tabindex="-1">
+                        <div class="item" data-value="specALL">Allow Anyone To Spectate</div>
+                        <div class="item" data-value="specNONE">Allow No One To Spectate</div>
+                        <div class="item" data-value="specLOBBYONLY">Allow Only Lobby Spectators</div>
+                      </div>
+                    </div>
                 </div>
-                <div class="form-group">
+                <div class="field" id="game-name-input">
                     <label>Game Name</label>
                     <input type="text" class="form-control" id="game-name" placeholder="Example's Game">
                 </div>
-                <div class="form-group">
+                <div class="field">
                     <label>Game Password (Optional)</label>
                     <input type="password" class="form-control" id="game-password" placeholder="Password">
                 </div>
                 <h4>Advanced settings (Optional)</h4>
-                <div class="form-group">
+                <div class="field">
                     <label>Game ID</label>
                     <input type="text" class="form-control" id="game-id" placeholder="1">
                 </div>
-                <div class="form-group">
+                <div class="field">
                     <label>Game Report URL</label>
                     <input type="text" class="form-control" id="game-report" placeholder="https://api.example.com/gamereport/">
                 </div>
-                <div class="form-group">
-                    <input class="btn btn-primary" type="button" id="submit" value="Generate!">
+                <div class="field">
+                    <button class="ui blue button" type="button" id="submit">Generate!</button>
                 </div>
                 <div id="result">
                 </div>
@@ -104,6 +125,7 @@
 
         <script src="js/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
+        <script src="js/semantic.min.js"></script>
         <script src="js/ie10-viewport-bug-workaround.js"></script>
         <script src="js/main.js"></script>
 

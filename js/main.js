@@ -12,39 +12,36 @@ return t;},_utf8_decode:function(e){var t="";var n=0;var r=c1=c2=0;while(n<e.len
 return t;}};
 $(document).ready(function(){
     $("#team-select").mouseover(function() {
-        var mapselect = $("#map-select").val();
-        var teamselecthtml = $("#team-select").html();
-        if(teamselecthtml === '<option value="team1">1</option><option value="team2">2</option><option value="team3">3</option>'){
+        var mapselect = $("#map-select").dropdown('get value');
+        var teamselecthtml = $("#team-select-menu").html();
+        if(teamselecthtml === '<div class="item" data-value="team1">1</div><div class="item" data-value="team2">2</div><div class="item" data-value="team3">3</div>'){
             if(mapselect !== "map10"){
-                $("#team-select").empty();
-            $("#team-select").append('<option value="team1">1</option><option value="team2">2</option><option value="team3">3</option><option value="team4">4</option><option value="team5">5</option>');
+                $("#team-select-menu").empty();
+                $("#team-select-menu").append('<div class="item" data-value="team1">1</div><div class="item" data-value="team2">2</div><div class="item" data-value="team3">3</div><div class="item" data-value="team4">4</div><div class="item" data-value="team5">5</div>');
             }
         }else if(mapselect === "map10") {
-            $("#team-select").empty();
-            $("#team-select").append('<option value="team1">1</option><option value="team2">2</option><option value="team3">3</option>');
-        }else if(teamselecthtml === '<option value="team1">1</option><option value="team2">2</option><option value="team3">3</option><option value="team4">4</option><option value="team5">5</option>'){
+            $("#team-select-menu").empty();
+            $("#team-select-menu").append('<div class="item" data-value="team1">1</div><div class="item" data-value="team2">2</div><div class="item" data-value="team3">3</div>');
+        }else if(teamselecthtml === '<div class="item" data-value="team1">1</div><div class="item" data-value="team2">2</div><div class="item" data-value="team3">3</div><div class="item" data-value="team4">4</div><div class="item" data-value="team5">5</div>'){
         
         }else{
-            $("#team-select").empty();
-            $("#team-select").append('<option value="team1">1</option><option value="team2">2</option><option value="team3">3</option><option value="team4">4</option><option value="team5">5</option>');
+            $("#team-select-menu").empty();
+            $("#team-select-menu").append('<div class="item" data-value="team1">1</div><div class="item" data-value="team2">2</div><div class="item" data-value="team3">3</div><div class="item" data-value="team4">4</div><div class="item" data-value="team5">5</div>');
         }
     });
+    $('.ui.dropdown')
+        .dropdown()
+    ;
 });
 $("#submit").click(function() {
     $("#result").empty();
-    var mapselect = $("#map-select").val();
-    var pickselect = $("#pick-select").val();
-    var teamselect = $("#team-select").val();
-    var specselect = $("#spec-select").val();
     var gamename = $("#game-name").val();
     var gamepassword = $("#game-password").val();
     var gameid = $("#game-id").val();
     var gamereport = $("#game-report").val();
     if (gamename === "") {
-        alert("錯誤:房間名稱不可為空白!");
     } else {
         var json = '{"name":"' + gamename + '","extra":"' + gameid + '","password":"' + gamepassword + '","report":"' + gamereport + '"}';
         var code = "pvpnet://lol/customgame/joinorcreate/" + mapselect + "/" + pickselect + "/" + teamselect + "/" + specselect + "/" + Base64.encode(json);
-        $("#result").append('<h3>產生的電競專碼</h3><textarea class="form-control" rows="3">' + code + '</textarea>');
     }
 });
