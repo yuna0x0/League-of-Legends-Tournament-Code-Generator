@@ -49,26 +49,56 @@ $("#submit").click(function() {
     var gamepassword = $("#game-password").val();
     var gameid = $("#game-id").val();
     var gamereport = $("#game-report").val();
-    if (gamename === "") {
-        $("#game-name-input").attr('class','field error');
-        $("#submit").attr('class','ui primary button');
-    }
-    if(mapselect === ""){
-            $("#map-select").attr('class','ui selection dropdown error');
+    var notpass = true
+    if(notpass === true){
+        if (gamename === "") {
+            $("#game-name-input").attr('class','field error');
+            var gamenameerror = true
             $("#submit").attr('class','ui primary button');
+        }else{
+            var gamenameerror = false
+        }
+        if(mapselect === ""){
+                $("#map-select").attr('class','ui selection dropdown error');
+                var mapselecterror = true
+                $("#submit").attr('class','ui primary button');
+        }else{
+            var mapselecterror = false
+        }
+        if(pickselect === ""){
+                $("#pick-select").attr('class','ui selection dropdown error');
+                var pickselecterror = true
+                $("#submit").attr('class','ui primary button');
+        }else{
+            var pickselecterror = false
+        }
+        if(teamselect === ""){
+                $("#team-select").attr('class','ui selection dropdown error');
+                var teamselecterror = true
+                $("#submit").attr('class','ui primary button');
+        }else{
+            var teamselecterror = false
+        }
+        if(specselect === ""){
+                $("#spec-select").attr('class','ui selection dropdown error');
+                var specselecterror = true
+                $("#submit").attr('class','ui primary button');
+        }else{
+            var specselecterror = false
+        }
+        if(gamenameerror === false){
+            if(mapselecterror === false){
+                if(pickselecterror === false){
+                    if(teamselecterror === false){
+                        if(specselecterror === false){
+                            notpass = false
+                        }
+                    }
+                }
+            }
+        }
     }
-    if(pickselect === ""){
-            $("#pick-select").attr('class','ui selection dropdown error');
-            $("#submit").attr('class','ui primary button');
-    }
-    if(teamselect === ""){
-            $("#team-select").attr('class','ui selection dropdown error');
-            $("#submit").attr('class','ui primary button');
-    }
-    if(specselect === ""){
-            $("#spec-select").attr('class','ui selection dropdown error');
-            $("#submit").attr('class','ui primary button');
-    }else{
+    if(notpass === false){
         var json = '{"name":"' + gamename + '","extra":"' + gameid + '","password":"' + gamepassword + '","report":"' + gamereport + '"}';
         var code = "pvpnet://lol/customgame/joinorcreate/" + mapselect + "/" + pickselect + "/" + teamselect + "/" + specselect + "/" + Base64.encode(json);
         $("#result").append('<h3>Tournament Code</h3><textarea class="form-control" rows="3">' + code + '</textarea>');
