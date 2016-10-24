@@ -1,6 +1,7 @@
 /*
-League of Legends Tournament Code.js for website
+lolcode.js for website
 by edisonlee55
+League of Legends Tournament Code Website: https://lolcode.edisonlee55.com
 Website: https://www.edisonlee55.com
 */
 var Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",encode:function(e){var t="";var n,r,i,s,o,u,a;var f=0;e=Base64._utf8_encode(e);while(f<e.length){n=e.charCodeAt(f++);r=e.charCodeAt(f++);i=e.charCodeAt(f++);s=n>>2;o=(n&3)<<4|r>>4;u=(r&15)<<2|i>>6;a=i&63;if(isNaN(r)){u=a=64;}else if(isNaN(i)){a=64;}
