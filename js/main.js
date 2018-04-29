@@ -1,7 +1,8 @@
 /*
-League of Legends Tournament Code.js for website
+lolcode.js for website
 by edisonlee55
-Website: https://www.edisonlee55.com
+League of Legends Tournament Code Website: https://lolcode.edisonlee55.com
+edisonlee55 Official Website: https://www.edisonlee55.com
 */
 var Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",encode:function(e){var t="";var n,r,i,s,o,u,a;var f=0;e=Base64._utf8_encode(e);while(f<e.length){n=e.charCodeAt(f++);r=e.charCodeAt(f++);i=e.charCodeAt(f++);s=n>>2;o=(n&3)<<4|r>>4;u=(r&15)<<2|i>>6;a=i&63;if(isNaN(r)){u=a=64;}else if(isNaN(i)){a=64;}
 t=t+this._keyStr.charAt(s)+this._keyStr.charAt(o)+this._keyStr.charAt(u)+this._keyStr.charAt(a);}
@@ -12,39 +13,96 @@ return t;},_utf8_decode:function(e){var t="";var n=0;var r=c1=c2=0;while(n<e.len
 return t;}};
 $(document).ready(function(){
     $("#team-select").mouseover(function() {
-        var mapselect = $("#map-select").val();
-        var teamselecthtml = $("#team-select").html();
-        if(teamselecthtml === '<option value="team1">1</option><option value="team2">2</option><option value="team3">3</option>'){
+        var mapselect = $("#map-select").dropdown('get value');
+        var teamselecthtml = $("#team-select-menu").html();
+        if(teamselecthtml === '<div class="item" data-value="team1">1</div><div class="item" data-value="team2">2</div><div class="item" data-value="team3">3</div>'){
             if(mapselect !== "map10"){
-                $("#team-select").empty();
-            $("#team-select").append('<option value="team1">1</option><option value="team2">2</option><option value="team3">3</option><option value="team4">4</option><option value="team5">5</option>');
+                $("#team-select-menu").empty();
+                $("#team-select-menu").append('<div class="item" data-value="team1">1</div><div class="item" data-value="team2">2</div><div class="item" data-value="team3">3</div><div class="item" data-value="team4">4</div><div class="item" data-value="team5">5</div>');
             }
         }else if(mapselect === "map10") {
-            $("#team-select").empty();
-            $("#team-select").append('<option value="team1">1</option><option value="team2">2</option><option value="team3">3</option>');
-        }else if(teamselecthtml === '<option value="team1">1</option><option value="team2">2</option><option value="team3">3</option><option value="team4">4</option><option value="team5">5</option>'){
+            $("#team-select-menu").empty();
+            $("#team-select-menu").append('<div class="item" data-value="team1">1</div><div class="item" data-value="team2">2</div><div class="item" data-value="team3">3</div>');
+        }else if(teamselecthtml === '<div class="item" data-value="team1">1</div><div class="item" data-value="team2">2</div><div class="item" data-value="team3">3</div><div class="item" data-value="team4">4</div><div class="item" data-value="team5">5</div>'){
         
         }else{
-            $("#team-select").empty();
-            $("#team-select").append('<option value="team1">1</option><option value="team2">2</option><option value="team3">3</option><option value="team4">4</option><option value="team5">5</option>');
+            $("#team-select-menu").empty();
+            $("#team-select-menu").append('<div class="item" data-value="team1">1</div><div class="item" data-value="team2">2</div><div class="item" data-value="team3">3</div><div class="item" data-value="team4">4</div><div class="item" data-value="team5">5</div>');
         }
     });
+    $('.ui.dropdown')
+        .dropdown()
+    ;
 });
 $("#submit").click(function() {
     $("#result").empty();
-    var mapselect = $("#map-select").val();
-    var pickselect = $("#pick-select").val();
-    var teamselect = $("#team-select").val();
-    var specselect = $("#spec-select").val();
+    $("#game-name-input").attr('class','field');
+    $("#map-select").attr('class','ui selection dropdown');
+    $("#pick-select").attr('class','ui selection dropdown');
+    $("#team-select").attr('class','ui selection dropdown');
+    $("#spec-select").attr('class','ui selection dropdown');
+    $("#submit").attr('class','ui primary loading button');
+    var mapselect = $("#map-select").dropdown('get value');
+    var pickselect = $("#pick-select").dropdown('get value');
+    var teamselect = $("#team-select").dropdown('get value');
+    var specselect = $("#spec-select").dropdown('get value');
     var gamename = $("#game-name").val();
     var gamepassword = $("#game-password").val();
     var gameid = $("#game-id").val();
     var gamereport = $("#game-report").val();
-    if (gamename === "") {
-        alert("錯誤:房間名稱不可為空白!");
-    } else {
+    var notpass = true
+    if(notpass === true){
+        if (gamename === "") {
+            $("#game-name-input").attr('class','field error');
+            var gamenameerror = true
+            $("#submit").attr('class','ui primary button');
+        }else{
+            var gamenameerror = false
+        }
+        if(mapselect === ""){
+                $("#map-select").attr('class','ui selection dropdown error');
+                var mapselecterror = true
+                $("#submit").attr('class','ui primary button');
+        }else{
+            var mapselecterror = false
+        }
+        if(pickselect === ""){
+                $("#pick-select").attr('class','ui selection dropdown error');
+                var pickselecterror = true
+                $("#submit").attr('class','ui primary button');
+        }else{
+            var pickselecterror = false
+        }
+        if(teamselect === ""){
+                $("#team-select").attr('class','ui selection dropdown error');
+                var teamselecterror = true
+                $("#submit").attr('class','ui primary button');
+        }else{
+            var teamselecterror = false
+        }
+        if(specselect === ""){
+                $("#spec-select").attr('class','ui selection dropdown error');
+                var specselecterror = true
+                $("#submit").attr('class','ui primary button');
+        }else{
+            var specselecterror = false
+        }
+        if(gamenameerror === false){
+            if(mapselecterror === false){
+                if(pickselecterror === false){
+                    if(teamselecterror === false){
+                        if(specselecterror === false){
+                            notpass = false
+                        }
+                    }
+                }
+            }
+        }
+    }
+    if(notpass === false){
         var json = '{"name":"' + gamename + '","extra":"' + gameid + '","password":"' + gamepassword + '","report":"' + gamereport + '"}';
         var code = "pvpnet://lol/customgame/joinorcreate/" + mapselect + "/" + pickselect + "/" + teamselect + "/" + specselect + "/" + Base64.encode(json);
-        $("#result").append('<h3>產生的電競專碼</h3><textarea class="form-control" rows="3">' + code + '</textarea>');
+        $("#result").append('<h3>Tournament Code</h3><textarea class="form-control" rows="3">' + code + '</textarea>');
+        $("#submit").attr('class','ui primary button');
     }
 });
